@@ -6,23 +6,22 @@ Phone(day)
 Phone(after hours)
 Email
 
-Artist
+Artists
 Name
 Blurb
 Thumbnail
 Description
 Image
-(Featured?)
+Featured
 
 Events
 Name
 Artist
 Blurb
-Date
+Location
+Date 
 
 Bulletin board
 Title
 Description
 Expiry date
-
- 
