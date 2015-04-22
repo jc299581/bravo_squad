@@ -46,10 +46,10 @@ else if ($_REQUEST['submit'] == "Delete Entry")
 }
 else if ($_REQUEST['submit'] == "Update Entry")
 {
-    $sql = "UPDATE Artists SET art_name = '$_REQUEST[art_name]', art_blurb = '$_REQUEST[art_blurb]',  art_desc = '$_REQUEST[art_desc]',  featured = '$_REQUEST[featured]' WHERE id = '$_REQUEST[art_id]'";
+    $sql = "UPDATE Artists SET art_name = '$_REQUEST[art_name]', art_blurb = '$_REQUEST[art_blurb]',  art_desc = '$_REQUEST[art_desc]',  featured = '$_REQUEST[featured]' WHERE art_id = '$_REQUEST[art_id]'";
     echo "<p>Query: " . $sql . "</p>\n<p><strong>";
     if ($dbh->exec($sql))
-        echo "Updated $_REQUEST[name]";
+        echo "Updated $_REQUEST[art_name]";
     else
         echo "Not updated";
 }
