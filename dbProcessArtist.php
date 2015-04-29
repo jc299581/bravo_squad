@@ -76,7 +76,7 @@ if ($debugOn) {
 }
 foreach ($dbh->query($sql) as $row)
 {
-    print $row[art_name] .' - '. $row[art_blurb] .  $row[art_desc] .' - '. "<br />\n";
+    print $row[art_name] .' - '. $row[art_blurb] .  $row[art_desc] .' - '. $row[featured] .' - '. "<br />\n";
 }
 
 $dbh = null;
