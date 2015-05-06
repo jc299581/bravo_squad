@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="mainstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+<script type="text/javascript">
+var slideimages = new Array()
+
+slideimages[0] = new Image()
+slideimages[0].src = "images/Aquapella.jpg"
+slideimages[1] = new Image()
+slideimages[1].src = "images/AvivaLane.jpg"
+slideimages[2] = new Image()
+slideimages[2].src = "images/Camerata.jpg"
+slideimages[3] = new Image()
+slideimages[3].src = "images/CelticFyre.jpg"
+slideimages[4] = new Image()
+slideimages[4].src = "images/SNBB1.jpg"
+</script>
+<body onLoad="MM_preloadImages('imagess/navover_01.jpg','imagess/navover_02.jpg','imagess/navover_03.jpg','imagess/navover_04.jpg','imagess/navover_05.jpg','imagess/navover_06.jpg')">
+</head>
+<header><a href="index.html"><img id="logo" src="images/logo.jpg"></a><div id="corner">Log In <a href="contactUs.html">Contact Us</a></div></header>
+<nav><a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('home','','imagess/navover_01.jpg',1)"><img src="imagess/navbar_01.jpg" alt="HOME" width="175" height="50" id="home"></a><a href="members.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('members','','imagess/navover_02.jpg',1)"><img src="imagess/navbar_02.jpg" alt="" width="175" height="50" id="members"></a><a href="musos.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('musos','','imagess/navover_03.jpg',1)"><img src="imagess/navbar_03.jpg" alt="" width="175" height="49" id="musos"></a><a href="bulliten.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('bulletin','','imagess/navover_04.jpg',1)"><img src="imagess/navbar_04.jpg" alt="" width="175" height="50" id="bulletin"></a><a href="sponsor.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sponsor','','imagess/navover_05.jpg',1)"><img src="imagess/navbar_05.jpg" alt="" width="175" height="49" id="sponsor"></a><a href="history.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('history','','imagess/navover_06.jpg',1)"><img src="imagess/navbar_06.jpg" alt="" width="175" height="49" id="history"></a></nav>
+<div id="wrapper">
+<div id="main">
+    <h1>EVENTS</h1>
+<div id="slideshow">
+<a href="individual.html"><img src = "images/Aquapella.jpg" id="slide" width = "600" height="350"/></a>
+
+<script type = "text/javascript">
+
+var imagenum = 0
+var arrayimage = 0
+function getImages(){
+	document.getElementById("'"+arrayimage+"'").src = slideimages[arrayimage].src
+	arrayimage++
+	}
+
+function slideselect(imagenum){
+	document.getElementById("slide").src = slideimages[imagenum].src
+	setTimeout(7000)
+	}
+
+function slideit(){
+	document.getElementById("slide").src = slideimages[imagenum].src
+	if (imagenum<4)
+		imagenum++
+	else
+		imagenum=0
+	setTimeout("slideit()", 5000)}
+	
+slideit()
+getImages()
+</script>
+<div id ="thumbs">
+		
+	<div class ="thumb">
+    	<div class="frame"><a href="javascript:slideselect(0)"><img id = "0" src="images/Aquapella.jpg" width ="120" height="75"/></a></div>
+        <div class ="thumb_content"><p>Aquapella</p></div>
+	</div>
+    
+    <div class ="thumb">
+    	<div class="frame"><a href="javascript:slideselect(1)"><img id = "1" src="images/AvivaLane.jpg" width ="120" height="75"/></a></div>
+        <div class ="thumb_content"><p>Aquapella</p></div>
+	</div>
+    <div class ="thumb">
+    	<div class="frame"><a href="javascript:slideselect(2)"><img id = "2" src="images/Camerata.jpg" width ="120" height="75"/></a></div>
+        <div class ="thumb_content"><p>Aquapella</p></div>
+	</div>
+    <div class ="thumb">
+    	<div class="frame"><a href="javascript:slideselect(3)"><img id = "3" src="images/CelticFyre.jpg" width ="120" height="75"/></a></div>
+        <div class ="thumb_content"><p>Aquapella</p></div>
+	</div>
+</div>
+</div>
+	</div>
+<div id="volunteer">
+    <h2>Volunteers Needed</h2>
+    <ul>
+        <li>St. Josephs needs singers/musicians</li>
+        <br>
+        <li>TCMC event organisers</li>
+        <br>
+        <li>TCMC Administator (part paid)</li>
+    </ul>
+</div>
+<footer>&copy;TCMC</footer>
+</div>
+</body>
+</html>
