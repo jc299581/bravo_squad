@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <title>TCMC - Home</title>
+</head>
+<header>
+    <div id="logo"><a href="/"><img src="images/TCMC.jpg" alt=""></a></div>
+
+    <nav>
+        <ul class="menu">
+            <li id="current"><a href="index.html"><span>Home</span></a></li>
+            <li><a href="/about-us"><span>About us</span></a></li>
+            <li><a href="/ac-restoration"><span>Restoration</span></a></li>
+            <li><a href="/ac-servicing"><span>Servicing</span></a></li>
+            <li><a href="/ac-sales"><span>Sales</span></a></li>
+            <li><a href="/contact-us"><span>Contact us</span></a></li></ul>
+    </nav>
+</header>
+<body>
+<div id = "wrapper">
+    <div id="main">
+
+    </div>
+    <footer></footer>
+</div>
+</body>
+</html>
