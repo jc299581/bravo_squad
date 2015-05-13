@@ -1,89 +1,66 @@
 <?php
-
-include("dbConnection.php");
-$debugOn = true;
-
-
-if ($_REQUEST['submit'] == "X")
-{
-    $sql = "DELETE FROM Artists WHERE art_id = '$_REQUEST[art_id]'";
-    if ($dbh->exec($sql))
-        header("Location: artist.php");
-}
+    include("dbconnection.php");
 ?>
 
 <!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PHP SQLite Music Centre Database - Results Page</title>
+    <title>PHP SQLite Music Centre Database</title>
 </head>
 
 <body>
-<h1>Results</h1>
-<?php
-echo "<h2>Form Data</h2>";
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
+<h1>Events Entry</h1>
+<form id="insert" name="insert" method="post" action="dbProcessEvent.php">
+    <fieldset class="subtleSet">
+        <h2>Insert new Event:</h2>
+        <p>
+            <label for="evn_name">Name: </label>
+            <input type="text" name="evn_name" id="evn_name">
+        </p>
+        <p>
+            <label for="evn_artist">Artist: </label>
+            <?php
+                $sql="SELECT art_name,art_id FROM Artists";
+                echo "Line 1";
+                echo "<select name='evn_artist' id='evn_artist'>"; // list box select command
+                foreach ($dbh->query($sql) as $row){//Array or records stored in $row
+                echo "<option value='$row[art_id]'>$row[art_name]</option>"; 
+                /* Option values are added by looping through the array */ 
+                }
+                echo "</select>";// Closing of list box
+            ?>
+        </p>
+        <p>
+            <label for="evn_blurb">Description: </label>
+            <textarea cols="50" rows="3" name="evn_blurb" form="insert"></textarea>
+        </p>
+        <p>
+            <label for="evn_location">location: </label>
+            <input type="text" name="evn_location" id="evn_location">
+        </p>
+        <p>
+            <label for="date">date:</label>
+            <input type="text" name="evn_day" id="day" placeholder="dd" size="2" maxlength="2">
+            <input type="text" name="evn_month" id="month" placeholder="mm" size="2" maxlength="2">
+            <input type="text" name="evn_year" id="year" placeholder="yyyy" size="4" maxlength="4">
+        </p>
+        
+        <p>
+            <input type="submit" name="submit" id="submit" value="Insert Entry">
+            <input type="submit" name="submit" value="Delete Old Entries">
+        </p>
+    </fieldset>
+</form>
 
-if ($_REQUEST['submit'] == "Insert Entry")
-{
-    $sql = "INSERT INTO Events (evn_name, evn_artist, evn_blurb, evn_location, evn_date) VALUES ('$_REQUEST[evn_name]', '$_REQUEST[evn_artist]', '$_REQUEST[evn_blurb]', '$_REQUEST[evn_location]', '$_REQUEST[evn_date]')";
-    echo "<p>Query: " . $sql . "</p>\n<p><strong>";
-    if ($dbh->exec($sql))
-        echo "Inserted $_REQUEST[evn_name]";
-    else
-        echo "Not inserted"; // in case it didn't work - e.g. if database is not writeable
-}
-else if ($_REQUEST['submit'] == "Delete Entry")
-{
-    $sql = "DELETE FROM Events WHERE evn_id = '$_REQUEST[evn_id]'";
-    echo "<p>Query: " . $sql . "</p>\n<p><strong>";
-    if ($dbh->exec($sql))
-        echo "Deleted $_REQUEST[evn_name]";
-    else
-        echo "Not deleted";
-}
-else if ($_REQUEST['submit'] == "Update Entry")
-{
-    $sql = "UPDATE Artists SET art_name = '$_REQUEST[art_name]', art_blurb = '$_REQUEST[art_blurb]',  art_desc = '$_REQUEST[art_desc]',  featured = '$_REQUEST[featured]', art_img = '$_REQUEST[art_img]', art_thumbnail = '$_REQUEST[art_thumbnail]' WHERE art_id = '$_REQUEST[art_id]'";
-    echo "<p>Query: " . $sql . "</p>\n<p><strong>";
-    if ($dbh->exec($sql))
-        echo "Updated $_REQUEST[art_name]";
-    else
-        echo "Not updated";
-}
-else {
-    echo "This page did not come from a valid form submission.<br />\n";
-}
-echo "</strong></p>\n";
-
-// Basic select and display all contents from table
-
-echo "<h2>Artist Records in Database Now</h2>\n";
-$sql = "SELECT * FROM Artists";
-$result = $dbh->query($sql);
-$resultCopy = $result;
-
-if ($debugOn) {
-echo "<pre>";
-    $rows = $result->fetchall(PDO::FETCH_ASSOC);
-    echo count($rows) . " records in table<br />\n";
-    print_r($rows);
-    echo "</pre>";
-    echo "<br />\n";
-
-}
-foreach ($dbh->query($sql) as $row)
-{
-    print $row[art_name] .' - '. $row[art_blurb] .  $row[art_desc] .' - '. $row[featured] .' - '. "<br />\n";
-}
-
-
-$dbh = null;
-?>
-
-<p><a href="events.php">Return to database test page</a></p>
+<fieldset class="subtleSet">
+    <h2>Current data:</h2>
+    <?php
+    // Display what's in the database at the moment.
+    $sql = "SELECT * FROM events";
+    echo "</fieldset>\n";
+    // close the database connection
+    $dbh = null;
+    ?>
 </body>
 </html>
