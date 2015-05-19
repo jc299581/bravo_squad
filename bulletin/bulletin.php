@@ -11,7 +11,7 @@ include("dbconnection.php");
 
 <body>
 <h1> Bulletin</h1>
-<form id="insert" name="insert" method="post" action="dbProcessMember.php">
+<form id="insert" name="insert" method="post" action="dbProcessBulletin.php">
     <fieldset class="subtleSet">
         <h2>Insert new item:</h2>
         <p>
@@ -24,7 +24,7 @@ include("dbconnection.php");
         </p>
         <p>
             <label for="bul_expDate">Expiration date:</label>
-            <input type="text" name="bul_expDate" id="bul_expDate" />
+            <input type="date" name="bul_expDate" id="bul_expDate">
         </p>
         <p>
             <input type="submit" name="submit" id="submit" value="Insert Entry">
