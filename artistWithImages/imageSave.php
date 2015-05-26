@@ -54,7 +54,7 @@ if ($_REQUEST['submit'] == "Insert Entry") {
 
             $image = WideImage::load($newFullName);
 
-            $thumbnailImage = $image->resize(300, 300);
+            $thumbnailImage = $image->resize(150, 150);
             $thumbFullName = "images/thumb{$newName}";
             $thumbnailImage->saveToFile($thumbFullName);
             echo "Stored thumnail as: $thumbFullName<br />\n";
